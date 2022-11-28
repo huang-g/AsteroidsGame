@@ -18,8 +18,6 @@ public void draw()
   }
   ship.move();
   ship.show();
-  System.out.println(ship.getSpeed());
-
 }
 
 public void keyPressed() {

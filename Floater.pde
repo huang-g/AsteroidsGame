@@ -52,6 +52,7 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     fill(myColor);   
     stroke(myColor);    
     
+    pushMatrix();
     //translate the (x,y) center of the ship to the correct position
     translate((float)myCenterX, (float)myCenterY);
 
@@ -70,7 +71,27 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     endShape(CLOSE);
 
     //"unrotate" and "untranslate" in reverse order
-    rotate(-1*dRadians);
-    translate(-1*(float)myCenterX, -1*(float)myCenterY);
+    popMatrix();
   }   
+  
+  public double getDir() {
+    return myPointDirection;
+  }
+  
+  public void setDir(double dir) {
+    myPointDirection = dir;
+  }
+  
+  public double getSpeed() {
+    return Math.sqrt(myXspeed*myXspeed + myYspeed*myYspeed);
+  }
+  
+  public double getXspeed() { return myXspeed; }
+  
+  public void setXspeed(double x) { myXspeed = x; }
+  
+  public double getYspeed() { return myYspeed; }  
+  
+  public void setYspeed(double y) { myYspeed = y; }
+  
 } 

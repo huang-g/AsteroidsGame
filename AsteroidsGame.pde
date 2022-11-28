@@ -18,6 +18,8 @@ public void draw()
   }
   ship.move();
   ship.show();
+  System.out.println(ship.getSpeed());
+
 }
 
 public void keyPressed() {
@@ -48,5 +50,12 @@ public void keyReleased() {
   if(key == 's') {
     ship.setXspeed(0);
     ship.setYspeed(0);
+  }
+  if(key == 'r') {
+    ship.setXspeed(0);
+    ship.setYspeed(0);
+    ship.setDir(Math.random()*360);
+    ship.setXcenter(Math.random()*400+50);
+    ship.setYcenter(Math.random()*400+50);
   }
 }

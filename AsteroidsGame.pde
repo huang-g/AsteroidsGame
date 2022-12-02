@@ -1,6 +1,7 @@
 //your variable declarations here
 Star[] stars = new Star[150];
 Spaceship ship = new Spaceship();
+ArrayList<Asteroid> rocks = new ArrayList<Asteroid>();
 
 public void setup() 
 {
@@ -8,13 +9,24 @@ public void setup()
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
-  
+  for (int i = 0; i < 11; i++) {
+    rocks.add(new Asteroid());
+  }
 }
 public void draw() 
 {
   background(0);
   for (int i = 0; i < stars.length; i++) {
     stars[i].show();
+  }
+  for (int i = 0; i < rocks.size(); i++) {
+    rocks.get(i).move();
+    rocks.get(i).show();
+    float d = dist((float)ship.getX(), (float)ship.getY(), (float)rocks.get(i).getX(), (float)rocks.get(i).getY());
+    if(d < 13) {
+      rocks.remove(i);
+      i--;
+    }
   }
   ship.move();
   ship.show();
@@ -34,10 +46,10 @@ public void keyPressed() {
     }
   }
   if (key == 'a') {
-    ship.setDir(ship.getDir() - 2);
+    ship.setDir(ship.getDir() - 5);
   }
   if (key == 'd') {
-    ship.setDir(ship.getDir() + 2);
+    ship.setDir(ship.getDir() + 5);
   }
 }
 
@@ -54,7 +66,7 @@ public void keyReleased() {
     ship.setXspeed(0);
     ship.setYspeed(0);
     ship.setDir(Math.random()*360);
-    ship.setXcenter(Math.random()*400+50);
-    ship.setYcenter(Math.random()*400+50);
+    ship.setX(Math.random()*400+50);
+    ship.setY(Math.random()*400+50);
   }
 }

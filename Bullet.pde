@@ -9,22 +9,15 @@ class Bullet extends Floater {
     myColor = 255;
   }
   
-  public void move() {
-  fill(myColor);   
+  public void show() {
+    fill(myColor);   
     stroke(myColor);    
-    
-    pushMatrix();
-    //translate the (x,y) center of the ship to the correct position
-    translate((float)myCenterX, (float)myCenterY);
 
-    //convert degrees to radians for rotate()     
-    float dRadians = (float)(myPointDirection*(Math.PI/180));
-    
-    //rotate so that the polygon will be drawn in the correct direction
-    rotate(dRadians);
-    
     //draw the polygon
-    ellipse((float)myCenterX, (float)myCenterY, 5, 5);
+    ellipse((float)myCenterX, (float)myCenterY, 10, 10);
   }
 
+  public double getX() { return myCenterX; }
+  
+  public double getY() { return myCenterY; }
 }

@@ -104,9 +104,6 @@ public void keyPressed() {
     if (key == 'd') {
       ship.setDir(ship.getDir() + 5);
     }
-    if (key == 'e') {
-      shots.add(new Bullet(ship));
-    }
   } else {
     if(key == 'r') {
       gameover = false;
@@ -119,6 +116,9 @@ public void keyPressed() {
       }
       ship.setX(250);
       ship.setY(250);
+      ship.setXspeed(0);
+      ship.setYspeed(0);
+      ship.setDir(0);
       textSize(20);
       score = 0;
       health = 5;
@@ -136,7 +136,7 @@ public void keyReleased() {
       ship.setXspeed(0);
       ship.setYspeed(0);
     }
-    if(key == 'r') {
+    if(key == 'e') {
       ship.setXspeed(0);
       ship.setYspeed(0);
       ship.setDir(Math.random()*360);
@@ -145,3 +145,9 @@ public void keyReleased() {
     }
   }
 }
+
+public void mouseClicked() {
+  if(mouseButton == LEFT) {
+    shots.add(new Bullet(ship));
+  }
+} 
